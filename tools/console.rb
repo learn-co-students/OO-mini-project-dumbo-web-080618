@@ -13,6 +13,7 @@ mash_potato = Recipe.new("mash potato")
 potato_soup = Recipe.new("potato soup")
 ham_sandwhich = Recipe.new("ham_sandwhich")
 boiled_egg = Recipe.new("boiled egg")
+boiled_milk_peanut = Recipe.new("boiled milk peanut")
 
 felix = User.new("Felix")
 some_guy = User.new("some guy")
@@ -22,6 +23,7 @@ felix.add_recipe_card(ham_sandwhich, '2018/3/1', 2)
 felix.add_recipe_card(potato_soup, '2018/7/14', 4)
 
 some_guy.add_recipe_card(boiled_egg, '1993/9/14',4)
+some_guy.add_recipe_card(boiled_milk_peanut, '2000/3/15',5)
 some_guy.add_recipe_card(mash_potato, '1993/9/12',2)
 
 some_guy.declare_allergen(milk)
@@ -32,5 +34,6 @@ mash_potato.add_ingredients([potato, salt, pepper])
 potato_soup.add_ingredients([potato, salt, pepper, milk])
 ham_sandwhich.add_ingredients([bread, lettuce, ham])
 boiled_egg.add_ingredients([egg])
+boiled_milk_peanut.add_ingredients([peanut, milk])
 
 binding.pry
