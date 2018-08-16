@@ -38,11 +38,16 @@ class Recipe
   end
 
   def allergens
-    self.ingredients.map do |e|
-      Allergen.all.select do |i|
-        i.ingredient == e
+    uniq_allergen = Allergen.all.map {|a| a.ingredient}.uniq
+    allerg = []
+    for x in 0..uniq_allergen.length-1
+      self.ingredients.each do |i|
+        if i.ingredient == uniq_allergen[x]
+          allerg << i.ingredient
+        end
       end
     end
+    allerg
   end
 
   def add_ingredients(ingredients)
