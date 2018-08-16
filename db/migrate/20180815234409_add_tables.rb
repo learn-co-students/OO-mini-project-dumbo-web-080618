@@ -1,4 +1,4 @@
-class AddTables < ActiveRecord::Migration[5.2]
+class AddTables < ActiveRecord::Migration[5.1]
   def change
 
   #create reciepe table
@@ -21,7 +21,7 @@ class AddTables < ActiveRecord::Migration[5.2]
 
 #recipe_ingredients
   create_table :recipe_ingredients do |t|
-    t.string :user_id
+    t.integer :ingredient_id
     t.integer :recipe_id
     t.integer :rating
   end
@@ -30,7 +30,8 @@ class AddTables < ActiveRecord::Migration[5.2]
  #allergens table
 
       create_table :allergens do |t|
-        t.string :user_id
+        t.string :name
+        t.integer :user_id
         t.integer :ingredient_id
     end
 
