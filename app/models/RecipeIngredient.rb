@@ -15,9 +15,5 @@ class RecipeIngredient
   def self.all 
     @@all 
   end
-  # - `RecipeIngredient#recipe`
-  # should return the recipe instance
-  # def recipe
-  #   self.recipe
-  # end
+
 end

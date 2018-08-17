@@ -12,7 +12,6 @@ class Recipe
     @@all
   end
 
-  # helper method that provides the select recipe_ingredients for instance of class
   def recipe_ingredients
     RecipeIngredient.all.select{|rec_ingredient|
       self == rec_ingredient.recipe}
@@ -31,18 +30,32 @@ class Recipe
   end
 
 # TODO: Once Allergen class is made/can initialize do this:
-# - `Recipe#allergens`
-# should return all of the ingredients in this recipe that are allergens
   def allergens
+    Allergen.all.select{|allergen| get_ingredients.include?(allergen.ingredient)}.map{|allergen| allergen.ingredient}
   end
 
-# TODO: Once the User Class is made do the following
-=begin
-# - `Recipe.most_popular` -> should return the recipe instance with the highest number of users (the recipe that has the most recipe cards)
-  def self.most_popular
+  def self.most_popular 
+    recipe_hash = {}
+    max_users = 0
+    most_popular = nil
+    RecipeCard.all.each{|r_card|
+      if (recipe_hash[r_card.recipe.name] != nil)
+        recipe_hash[r_card.recipe.name] += 1
+      else
+        recipe_hash[r_card.recipe.name] = 1
+      end
+    }
+    recipe_hash.each{|recipe_name, num_of_users|
+      if(num_of_users > max_users)
+        max_users = num_of_users
+        most_popular = recipe_name
+      end
+    }
+    Recipe.all.find{|recipe| recipe.name == most_popular}
   end
   # - `Recipe#users` ->should return the user instances who have recipe cards with this recipe
   def users
+    RecipeCard.all.select{|r_card| r_card.recipe == self}.map{|select_cards| select_cards.user}
   end
-=end
+
 end
