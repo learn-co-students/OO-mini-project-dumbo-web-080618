@@ -1,3 +1,28 @@
 require_relative '../config/environment.rb'
 
+recipe1 = Recipe.new('Chicken Pot Pie')
+ingredient01 = Ingredient.new('chicken')
+ingredient02 = Ingredient.new('carrots')
+ingredient03 = Ingredient.new('crust')
+ingredient04 = Ingredient.new('mixed veg')
+ingredient05 = Ingredient.new('peppers')
+ingredient06 = Ingredient.new('potato')
+ingredient07 = Ingredient.new('tomato')
+ingredient08 = Ingredient.new('fish')
+ingredient09 = Ingredient.new('peanut')
+ingredient10 = Ingredient.new('milk')
+ingredient11 = Ingredient.new('nuts')
+ingredient12 = Ingredient.new('lemon')
+ingredient13 = Ingredient.new('pepper')
+ingredient14 = Ingredient.new('beef')
+ingredient15 = Ingredient.new('butter')
+r_ingredient01 = RecipeIngredient.new(recipe1, ingredient01)
+r_ingredient02 = RecipeIngredient.new(recipe1, ingredient02)
+user1 = User.new('Bobby Broneo')
+user2 = User.new('Yennifer Young')
+user3 = User.new('Jason Jones')
+allergen1 = Allergen.new(user1, ingredient02)
+allergen2 = Allergen.new(user3, ingredient10)
+allergen3 = Allergen.new(user2, ingredient10)
+
 binding.pry
