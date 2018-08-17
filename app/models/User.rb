@@ -35,4 +35,8 @@ class User
     recipes[-1].recipe
   end
 
+  def safe_recipe
+    allergy_ingredient_array = self.allergens.map {|aller| aller.ingredient}
+    Recipe.all.select {|rec| (rec.ingredients[0] & allergy_ingredient_array).length == 0}
+  end
 end
